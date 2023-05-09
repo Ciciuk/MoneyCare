@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Incomes>
+<Income>
+<IncomeId>1</IncomeId>
+<UserId>2</UserId>
+<Date>2023-05-06</Date>
+<Item>wplata</Item>
+<Amount>11.500000</Amount>
+</Income>
+<Income>
+<IncomeId>2</IncomeId>
+<UserId>1</UserId>
+<Date>2023-01-06</Date>
+<Item>oplata</Item>
+<Amount>11.400000</Amount>
+</Income>
+<Income>
+<IncomeId>3</IncomeId>
+<UserId>1</UserId>
+<Date>2023-02-06</Date>
+<Item>wplata</Item>
+<Amount>11.500000</Amount>
+</Income>
+</Incomes>
