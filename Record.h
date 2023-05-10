@@ -1,5 +1,5 @@
-#ifndef INCOME_H
-#define INCOME_H
+#ifndef RECORD_H
+#define RECORD_H
 
 #include <iostream>
 #include <ctime>

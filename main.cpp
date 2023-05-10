@@ -7,7 +7,7 @@
 #include <sstream>
 #include <vector>
 
-#include "Income.h"
+#include "Record.h"
 #include "Markup.h"
 #include "User.h"
 
@@ -46,7 +46,7 @@ tm dateParse(string dateInString) {  // wyciaganie danych ze stringa do formatu 
     return date;
 }
 
-void IncomeToXml(const Record income) { // zapisywanie danych do XML 
+void RecordToXml(const Record income) { // zapisywanie danych z vectora do XML 
     CMarkup xml;
     tm time= income.getDate();
     bool fileExists = xml.Load("incomes.xml");
@@ -70,10 +70,10 @@ void IncomeToXml(const Record income) { // zapisywanie danych do XML
     xml.Save("incomes.xml");
 }
 
-vector <Record> xmlToIncome() { // pobieranie danych z xml i zapisywanie do vectora 
+vector <Record> xmlToRecord() { // pobieranie danych z xml i zapisywanie do vectora 
     CMarkup xml;
-    vector <Record> vincome;
-    Record income;
+    vector <Record> vrecord;
+    Record record;
     string temp = "";
 
     bool fileExists = xml.Load("incomes.xml");
@@ -82,19 +82,19 @@ vector <Record> xmlToIncome() { // pobieranie danych z xml i zapisywanie do vect
     xml.IntoElem(); //Incomes
     while (xml.FindElem("Income")) {
         xml.FindChildElem("IncomeId");
-        income.setRecordId(stoi(xml.GetChildData()));
+        record.setRecordId(stoi(xml.GetChildData()));
         xml.FindChildElem("UserId");
-        income.setUserId(stoi(xml.GetChildData()));
+        record.setUserId(stoi(xml.GetChildData()));
         xml.FindChildElem("Date");
-        income.setDate(dateParse( xml.GetChildData()));
+        record.setDate(dateParse( xml.GetChildData()));
         xml.FindChildElem("Item");
-        income.setItem(xml.GetChildData());
+        record.setItem(xml.GetChildData());
         xml.FindChildElem("Amount");
-        income.setAmount(stod(xml.GetChildData()));
-        vincome.push_back(income);
+        record.setAmount(stod(xml.GetChildData()));
+        vrecord.push_back(record);
     }
 
-    return vincome;
+    return vrecord;
 }
 
 tm currentTime(){ //dzisiejsza data 
@@ -146,7 +146,7 @@ int main()
     Record income1(1, 1, currentTime(), "wplata", 11.5);
     // IncomeToXml(income1);
 
-    vector <Record> income = xmlToIncome();
+    vector <Record> income = xmlToRecord();
 
     bool sprawdzenie = dateComparasion(income[0].getDate(), income[2].getDate());
 
