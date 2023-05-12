@@ -1,4 +1,4 @@
-#include "Income.h"
+#include "Record.h"
 
 int Record::getRecordId() const{
     return recordId;
@@ -8,7 +8,7 @@ int Record::getUserId() const {
     return userId;
 };
 
-tm Record::getDate() const {
+time_t Record::getDate() const {
     return date;
 };
 
@@ -28,7 +28,7 @@ void Record::setUserId(int userId){
     this->userId = userId;
 };
 
-void Record::setDate(struct tm date){
+void Record::setDate(time_t date){
     this->date = date;
 };
 

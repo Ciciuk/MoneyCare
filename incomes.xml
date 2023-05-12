@@ -21,4 +21,11 @@
 <Item>wplata</Item>
 <Amount>11.500000</Amount>
 </Income>
+<Income>
+<IncomeId>1</IncomeId>
+<UserId>2</UserId>
+<Date>1970-01-01</Date>
+<Item>wplatatata</Item>
+<Amount>12.500000</Amount>
+</Income>
 </Incomes>

@@ -1,4 +1,3 @@
-#define _XOPEN_SOURCE
 #include <time.h>
 
 #include <ctime>
@@ -10,6 +9,8 @@
 #include "Record.h"
 #include "Markup.h"
 #include "User.h"
+#include "ExpensesFile.h"
+#include "IncomesFile.h"
 
 using namespace std;
 
@@ -48,7 +49,7 @@ tm dateParse(string dateInString) {  // wyciaganie danych ze stringa do formatu 
 
 void RecordToXml(const Record income) { // zapisywanie danych z vectora do XML 
     CMarkup xml;
-    tm time= income.getDate();
+    //tm time= income.getDate();
     bool fileExists = xml.Load("incomes.xml");
     char dateString[50];
 
@@ -63,7 +64,7 @@ void RecordToXml(const Record income) { // zapisywanie danych z vectora do XML
     xml.IntoElem();
     xml.AddElem("IncomeId", income.getRecordId());
     xml.AddElem("UserId", income.getUserId());
-    strftime(dateString, 50, "%Y-%m-%d", &time);
+   // strftime(dateString, 50, "%Y-%m-%d", &time);
     xml.AddElem("Date", dateString);
     xml.AddElem("Item", income.getItem());
     xml.AddElem("Amount", to_string(income.getAmount()));
@@ -86,7 +87,7 @@ vector <Record> xmlToRecord() { // pobieranie danych z xml i zapisywanie do vect
         xml.FindChildElem("UserId");
         record.setUserId(stoi(xml.GetChildData()));
         xml.FindChildElem("Date");
-        record.setDate(dateParse( xml.GetChildData()));
+       // record.setDate(dateParse( xml.GetChildData()));
         xml.FindChildElem("Item");
         record.setItem(xml.GetChildData());
         xml.FindChildElem("Amount");
@@ -128,7 +129,7 @@ bool dateComparasion(tm date1, tm date2){ //porownywanie dat, jesli true to data
         return 1;
 }
 
-int main()
+int ___test_main()
 {
 
     User user1(1,"Mateo","123","Ma","Miciuk");
@@ -143,22 +144,28 @@ int main()
     //localtime(&time(NULL));
     //cout << t2->tm_hour << endl;
 
-    Record income1(1, 1, currentTime(), "wplata", 11.5);
+    //Record income1(1, 1, currentTime(), "wplata", 11.5);
     // IncomeToXml(income1);
 
     vector <Record> income = xmlToRecord();
 
-    bool sprawdzenie = dateComparasion(income[0].getDate(), income[2].getDate());
+   // bool sprawdzenie = dateComparasion(income[0].getDate(), income[2].getDate());
 
     system("pause");
     return 0;
 }
 
-int _main(){
+int main() {
+    
 
-    tm czas;
-    czas.tm_mon = 4;
+    ExpensesFile expensesFile("incomes");
+    vector <Record> incomes;
+    incomes = expensesFile.loadRecordsByUserId(1);
+    incomes = expensesFile.loadRecordsByUserId(1);
 
+    Record income1(1, 2, 0, "wplatatata", 12.5);
+
+    expensesFile.saveNewRecord(income1);
 
     return 0;
 }

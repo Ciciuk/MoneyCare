@@ -42,6 +42,7 @@
     "ostream": "cpp",
     "vector": "cpp",
     "ctime": "cpp",
-    "string": "cpp"
+    "string": "cpp",
+    "*.tcc": "cpp"
   }
 }

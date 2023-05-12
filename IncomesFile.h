@@ -1,5 +1,5 @@
-#ifndef EXPENSESFILE_H
-#define EXPENSESFILE_H
+#ifndef INCOMESFILE_H
+#define INCOMESFILE_H
 
 #include "File.h"
 #include "AuxilaryMethods.h"
@@ -12,13 +12,13 @@
 
 using namespace std;
 
-class ExpensesFile : public File{
+class IncomesFile : public File{
     
 
    public:
-    ExpensesFile(string fileName) : File(fileName){};
+    IncomesFile(string fileName) : File(fileName){};
     vector<Record> loadRecordsByUserId(int id);
-    void saveNewRecord(const Record expense);
+    void saveNewRecord(const Record income);
 };
 
 #endif

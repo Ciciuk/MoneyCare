@@ -9,12 +9,12 @@ using namespace std;
 class Record {
     int recordId;
     int userId;
-    struct tm date;
+    time_t date;
     string item;
     double amount;
 
    public:
-    Record(int recordId = 0, int userId = 0, struct tm date = {0}, string item = "", double amount = 0.0) {
+    Record(int recordId = 0, int userId = 0, time_t date = 0, string item = "", double amount = 0.0) {
         this->recordId = recordId;
         this->userId = userId;
         this->date = date;
@@ -24,13 +24,13 @@ class Record {
 
     int getRecordId() const;
     int getUserId() const;
-    tm getDate() const;
+    time_t getDate() const;
     string getItem() const;
     double getAmount() const;
 
     void setRecordId(int incomeId);
     void setUserId(int userId);
-    void setDate(struct tm date);
+    void setDate(time_t date);
     void setItem(string item);
     void setAmount(double amount);
 };
