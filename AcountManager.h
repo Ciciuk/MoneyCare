@@ -21,6 +21,7 @@ class AcountManager {
    
    int howManyDaysInThisMonth(int year, int month);
    bool checkIfDateIsCorrect(string date);
+   time_t getDate();
 
   public: 
    AcountManager(string expensesFileName, string incomesFileName, int userId) : expensesFile(expensesFileName), incomesFile(incomesFileName), CURRENT_USER_ID(userId) {
@@ -28,7 +29,7 @@ class AcountManager {
       incomes = incomesFile.loadRecordsByUserId(CURRENT_USER_ID);
    }
    
-   void getDate();
+   Record recordDataGathering();
 
 };
 

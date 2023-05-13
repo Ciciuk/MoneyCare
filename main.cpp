@@ -171,13 +171,13 @@ int _main() {
     return 0;
 }
 
-int datatest_main(){
-
-    time_t t1;
-    struct tm *t2;
-    time(&t1);
-    t2 = localtime(&t1);
-
+//int datatest_main(){
+int main() {
+    time_t t1,t2,t3;
+    //struct tm *t2;
+    //time(&t1);
+    //t2 = localtime(&t1);
+    char dateString[50];
     AcountManager acount("foo","bar",1);
     bool a,b,c,d,e,f,g;
 
@@ -187,6 +187,20 @@ int datatest_main(){
     // d = acount.checkIfDateIsCorrect("2003-13-31"); 
     // e = acount.checkIfDateIsCorrect("2021-02-29"); 
     // f = acount.checkIfDateIsCorrect("1997-01-03"); 
+    // t1 = acount.getDate();
+    // strftime(dateString, 50, "%Y-%m-%d", gmtime(&t1));
+    // cout << endl;
+    // cout << dateString << endl;
+
+    // t2 = acount.getDate();
+    // strftime(dateString, 50, "%Y-%m-%d", gmtime(&t2));
+    // cout << endl;
+    // cout << dateString << endl;
+
+    // t3 = acount.getDate();
+    // strftime(dateString, 50, "%Y-%m-%d", gmtime(&t3));
+    // cout << endl;
+    // cout << dateString << endl;
 
     return 0;
 }

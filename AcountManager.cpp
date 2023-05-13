@@ -20,8 +20,23 @@ bool AcountManager::checkIfEmptyExpenses() {
     return false;
 }
 
-void AcountManager::getDate(){
+time_t AcountManager::getDate(){
+    string stringDate;
+    tm tmDate;
+    bool loopOn = true;
 
+    while (loopOn) {
+        cout << "Podaj date w formacie rrrr-mm-dd: " << endl;
+        stringDate = AuxilaryMethods::getWholeLine();
+        if (checkIfDateIsCorrect(stringDate)){
+            tmDate = AuxilaryMethods::dateParseStringToTm(stringDate);
+            loopOn = false;
+        }
+        else
+            cout << "Data niepoprawna!" << endl;
+    }
+
+    return mktime(&tmDate);
 }
 
 int AcountManager::howManyDaysInThisMonth(int year, int month) {
@@ -43,7 +58,7 @@ bool AcountManager::checkIfDateIsCorrect(string date) { //data w tm formacie jes
 
     if (tmDate.tm_year < 100)
         return false;
-    else if ((tmDate.tm_mon < 0) || (tmDate.tm_mon == 0))
+    else if ((tmDate.tm_mon < 0) || (tmDate.tm_mday == 0))
         return false;
     else if ((tmDate.tm_mday <= 0) || (tmDate.tm_mday > howManyDaysInThisMonth(tmDate.tm_year + 1900, tmDate.tm_mon + 1)))
         return false;
@@ -52,3 +67,4 @@ bool AcountManager::checkIfDateIsCorrect(string date) { //data w tm formacie jes
 
     return true;
 }
+

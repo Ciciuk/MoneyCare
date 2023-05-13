@@ -45,7 +45,7 @@ int AuxilaryMethods::getId() {
 }
 
 tm AuxilaryMethods::dateParseStringToTm(string dateInString) {  // wyciaganie danych ze stringa do formatu daty (tm), strptime nie znalazłem w bibliotece ...
-    tm date = {0, 0, 0, 0, 0, 0, 0, 0, 1};
+    tm date = {0, 0, 2, 0, 0, 0, 0, 0, 1};
     string temp;
     stringstream ss(dateInString);
 
