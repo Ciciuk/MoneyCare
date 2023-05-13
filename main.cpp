@@ -158,14 +158,14 @@ int ___test_main()
 int main() {
     
 
-    ExpensesFile expensesFile("incomes");
-    vector <Record> incomes;
-    incomes = expensesFile.loadRecordsByUserId(1);
-    incomes = expensesFile.loadRecordsByUserId(1);
+    ExpensesFile expensesFile("expenses");
+    vector <Record> expenses1;
+    expenses1 = expensesFile.loadRecordsByUserId(1);
 
     Record income1(1, 2, 0, "wplatatata", 12.5);
+    Record expense1(1, 2, 0, "lekarz", 12.5);
 
-    expensesFile.saveNewRecord(income1);
+    expensesFile.saveNewRecord(expense1);
 
     return 0;
 }

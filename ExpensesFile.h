@@ -14,7 +14,6 @@ using namespace std;
 
 class ExpensesFile : public File{
     
-
    public:
     ExpensesFile(string fileName) : File(fileName){};
     vector<Record> loadRecordsByUserId(int id);

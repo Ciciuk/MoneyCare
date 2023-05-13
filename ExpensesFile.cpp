@@ -4,9 +4,12 @@ vector<Record> ExpensesFile::loadRecordsByUserId(int id) {
     CMarkup xml;
     vector <Record> vrecord;
     Record record;
-    //string temp = "";
+    string fileName = "";
+    int lastId;
 
-    bool fileExists = xml.Load("expenses.xml");
+    fileName.append(File::getName());
+    fileName.append(".xml");
+    xml.Load(fileName);
 
     xml.FindElem();
     xml.IntoElem();  // Expenses
@@ -24,17 +27,23 @@ vector<Record> ExpensesFile::loadRecordsByUserId(int id) {
         record.setAmount(stod(xml.GetChildData()));
         if(record.getUserId() == id)
             vrecord.push_back(record);
+        lastId = record.getRecordId();
     }
-
-    return vrecord;
+        File::setLastId(lastId);
+        return vrecord;
 }
 
 void ExpensesFile::saveNewRecord(const Record expense) {
     CMarkup xml;
-    time_t time = expense.getDate();
-    bool fileExists = xml.Load("expenses.xml");
     char dateString[50];
+    string fileName = "";
+    time_t time = expense.getDate();
 
+
+
+    fileName.append(File::getName());
+    fileName.append(".xml");
+    bool fileExists = xml.Load(fileName);
     if (!fileExists) {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
         xml.AddElem("Expenses");

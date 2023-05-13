@@ -10,13 +10,16 @@ using namespace std;
 
 class File {
     const string FILE_NAME;
+    int lastId;
 
    public:
    File(string fileName) : FILE_NAME (fileName){};
    virtual vector<Record> loadRecordsByUserId(int id){};
    virtual void saveNewRecord(const Record income){};
-   void setName(string s);
+
    string getName();
+   int getLastId();
+   void setLastId(int id);
 };
 
 #endif

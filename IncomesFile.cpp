@@ -4,9 +4,12 @@ vector<Record> IncomesFile::loadRecordsByUserId(int id) {
     CMarkup xml;
     vector <Record> vrecord;
     Record record;
-    //string temp = "";
+    string fileName = "";
+    int lastId;
 
-    bool fileExists = xml.Load("incomes.xml");
+    fileName.append(File::getName());
+    fileName.append(".xml");
+    xml.Load(fileName);
 
     xml.FindElem();
     xml.IntoElem();  // Incomes
@@ -24,17 +27,21 @@ vector<Record> IncomesFile::loadRecordsByUserId(int id) {
         record.setAmount(stod(xml.GetChildData()));
         if(record.getUserId() == id)
             vrecord.push_back(record);
+        lastId = record.getRecordId();
     }
-
+    File::setLastId(lastId);
     return vrecord;
 }
 
 void IncomesFile::saveNewRecord(const Record income) {
     CMarkup xml;
     time_t time = income.getDate();
-    bool fileExists = xml.Load("incomes.xml");
     char dateString[50];
+    string fileName = "";
 
+    fileName.append(File::getName());
+    fileName.append(".xml");
+    bool fileExists = xml.Load(fileName);
     if (!fileExists) {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
         xml.AddElem("Incomes");
@@ -51,4 +58,6 @@ void IncomesFile::saveNewRecord(const Record income) {
     xml.AddElem("Item", income.getItem());
     xml.AddElem("Amount", to_string(income.getAmount()));
     xml.Save("incomes.xml");
+
+    File::setLastId(income.getRecordId());
 }
