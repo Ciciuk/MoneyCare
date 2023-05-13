@@ -11,6 +11,7 @@
 #include "User.h"
 #include "ExpensesFile.h"
 #include "IncomesFile.h"
+#include "AcountManager.h"
 
 using namespace std;
 
@@ -155,7 +156,7 @@ int ___test_main()
     return 0;
 }
 
-int main() {
+int _main() {
     
 
     ExpensesFile expensesFile("expenses");
@@ -166,6 +167,26 @@ int main() {
     Record expense1(1, 2, 0, "lekarz", 12.5);
 
     expensesFile.saveNewRecord(expense1);
+
+    return 0;
+}
+
+int datatest_main(){
+
+    time_t t1;
+    struct tm *t2;
+    time(&t1);
+    t2 = localtime(&t1);
+
+    AcountManager acount("foo","bar",1);
+    bool a,b,c,d,e,f,g;
+
+    // a = acount.checkIfDateIsCorrect("2000-1--3"); 
+    // b = acount.checkIfDateIsCorrect("1999-01-03");
+    // c = acount.checkIfDateIsCorrect("2004-13-31");  
+    // d = acount.checkIfDateIsCorrect("2003-13-31"); 
+    // e = acount.checkIfDateIsCorrect("2021-02-29"); 
+    // f = acount.checkIfDateIsCorrect("1997-01-03"); 
 
     return 0;
 }
