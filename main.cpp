@@ -5,6 +5,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
+#include <string>
 
 #include "Record.h"
 #include "Markup.h"
@@ -156,23 +157,25 @@ int ___test_main()
     return 0;
 }
 
-int _main() {
+int main() {
     
 
-    ExpensesFile expensesFile("expenses");
-    vector <Record> expenses1;
-    expenses1 = expensesFile.loadRecordsByUserId(1);
+    // ExpensesFile expensesFile("expenses");
+    // vector <Record> expenses1;
+    // expenses1 = expensesFile.loadRecordsByUserId(1);
 
-    Record income1(1, 2, 0, "wplatatata", 12.5);
-    Record expense1(1, 2, 0, "lekarz", 12.5);
+    // Record income1(1, 2, 0, "wplatatata", 12.5);
+    // Record expense1(1, 2, 0, "lekarz", 12.5);
 
-    expensesFile.saveNewRecord(expense1);
+    // expensesFile.saveNewRecord(expense1);
+    AcountManager acount("expenses", "incomes", 1);
+    Record x = acount.incomeDataGathering();
 
     return 0;
 }
 
 //int datatest_main(){
-int main() {
+int _main() {
     time_t t1,t2,t3;
     //struct tm *t2;
     //time(&t1);
@@ -188,6 +191,7 @@ int main() {
     // e = acount.checkIfDateIsCorrect("2021-02-29"); 
     // f = acount.checkIfDateIsCorrect("1997-01-03"); 
     // t1 = acount.getDate();
+    // t1 = time(0);
     // strftime(dateString, 50, "%Y-%m-%d", gmtime(&t1));
     // cout << endl;
     // cout << dateString << endl;

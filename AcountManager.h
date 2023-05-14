@@ -19,18 +19,18 @@ class AcountManager {
    bool checkIfEmptyIncomes();
    bool checkIfEmptyExpenses();
    
-   int howManyDaysInThisMonth(int year, int month);
-   bool checkIfDateIsCorrect(string date);
+   int howManyDaysInThisMonth(const int year, const int month);
+   bool checkIfDateIsCorrect(const string date);
    time_t getDate();
+   double stringToDouble(const string &number);
 
-  public: 
+  public:
    AcountManager(string expensesFileName, string incomesFileName, int userId) : expensesFile(expensesFileName), incomesFile(incomesFileName), CURRENT_USER_ID(userId) {
-      expenses = expensesFile.loadRecordsByUserId(CURRENT_USER_ID);
-      incomes = incomesFile.loadRecordsByUserId(CURRENT_USER_ID);
+       expenses = expensesFile.loadRecordsByUserId(CURRENT_USER_ID);
+       incomes = incomesFile.loadRecordsByUserId(CURRENT_USER_ID);
    }
-   
-   Record recordDataGathering();
 
+   Record incomeDataGathering();
 };
 
 #endif

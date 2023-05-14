@@ -68,3 +68,36 @@ bool AcountManager::checkIfDateIsCorrect(string date) { //data w tm formacie jes
     return true;
 }
 
+Record AcountManager::incomeDataGathering() {
+    Record income;
+
+
+    cout << "-----Wprowadzanie Przychodu---------" << endl;
+
+    cout << "Data przychodu jest dzisiejsza? Jesli tak potwierdz \" T \" " << endl;
+    if(AuxilaryMethods::getOneChar() == 'T')
+        income.setDate(time(0));
+    else 
+        income.setDate(getDate());
+    cout << endl;
+
+    cout << "Czego dotyczy przychod: " << endl;
+    income.setItem(AuxilaryMethods::getWholeLine());
+    cout << endl;
+
+    cout << "Kwota przychodu: " << endl;
+    income.setItem(AuxilaryMethods::getWholeLine());
+    cout << endl;
+
+    return income;
+}
+
+double AcountManager::stringToDouble(const string &number) {
+    string x = number;
+
+    size_t pos = x.find(',');
+    if (pos != -1)
+        x.replace(pos, 1, ".");
+
+    return stod(x);
+}
