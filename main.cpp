@@ -169,7 +169,11 @@ int main() {
 
     // expensesFile.saveNewRecord(expense1);
     AcountManager acount("expenses", "incomes", 1);
-    Record x = acount.incomeDataGathering();
+
+
+
+    acount.displayAccountinCurrentMonth();
+
 
     return 0;
 }

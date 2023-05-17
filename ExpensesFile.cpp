@@ -30,6 +30,7 @@ vector<Record> ExpensesFile::loadRecordsByUserId(int id) {
         lastId = record.getRecordId();
     }
         File::setLastId(lastId);
+
         return vrecord;
 }
 
