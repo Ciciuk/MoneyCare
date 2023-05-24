@@ -3,7 +3,7 @@
 <Expense>
 <ExpenseId>1</ExpenseId>
 <UserId>1</UserId>
-<Date>1970-01-01</Date>
+<Date>2023-04-01</Date>
 <Item>wyplataExp1</Item>
 <Amount>12.500000</Amount>
 </Expense>

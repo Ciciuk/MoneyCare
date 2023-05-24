@@ -44,7 +44,8 @@ class AcountManager {
    void addNewIncome();
    void addNewExpenses();
    void displayAccountinCurrentMonth();
-
+   void displayAccountinLasttMonth();
+   void displayAccountinChosenPeriod();
 };
 
 #endif

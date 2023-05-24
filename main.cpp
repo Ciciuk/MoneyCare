@@ -172,8 +172,7 @@ int main() {
 
 
 
-    acount.displayAccountinCurrentMonth();
-
+    acount.displayAccountinChosenPeriod();
 
     return 0;
 }

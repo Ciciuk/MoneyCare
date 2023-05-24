@@ -31,14 +31,14 @@
 <Income>
 <IncomeId>5</IncomeId>
 <UserId>1</UserId>
-<Date>2023-05-01</Date>
+<Date>2023-04-01</Date>
 <Item>wplata5</Item>
 <Amount>126.400000</Amount>
 </Income>
 <Income>
 <IncomeId>6</IncomeId>
 <UserId>1</UserId>
-<Date>2023-05-31</Date>
+<Date>2023-04-30</Date>
 <Item>wplata6</Item>
 <Amount>223.400000</Amount>
 </Income>
