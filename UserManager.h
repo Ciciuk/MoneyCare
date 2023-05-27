@@ -22,7 +22,7 @@ class UserManager
 	User loggedUser;
 
 	User userDataGathering();
-	bool checkIfLoginIsNotUnique(string login);
+	bool checkIfLoginIsNotUnique(const string login);
 	bool checkIfEmptyUsers();
 	bool checkPassword(vector<User>::iterator i);
 	bool checkLoginAndPassword();

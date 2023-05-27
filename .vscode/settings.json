@@ -46,6 +46,7 @@
     "*.tcc": "cpp",
     "memory": "cpp",
     "istream": "cpp",
-    "functional": "cpp"
+    "functional": "cpp",
+    "iomanip": "cpp"
   }
 }

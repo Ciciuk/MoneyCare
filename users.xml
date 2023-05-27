@@ -10,7 +10,7 @@
 <User>
 <UserId>2</UserId>
 <Login>L2</Login>
-<Password>4h22</Password>
+<Password>222</Password>
 <Name>Mateusz2</Name>
 <Surname>Miciuk2</Surname>
 </User>
@@ -27,5 +27,12 @@
 <Password>444</Password>
 <Name>Mateusz4</Name>
 <Surname>Miciuk4</Surname>
+</User>
+<User>
+<UserId>5</UserId>
+<Login>L5</Login>
+<Password>555</Password>
+<Name>Mateusz5</Name>
+<Surname>Miciuk5</Surname>
 </User>
 </Users>

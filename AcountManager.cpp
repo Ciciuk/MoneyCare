@@ -3,6 +3,7 @@
 bool AcountManager::checkIfEmptyIncomes() {
     if (incomes.empty()) {
         cout << "Brak zapisanych przychodow ";
+        cout << endl;
         system("pause");
         return true;
     }
@@ -12,7 +13,8 @@ bool AcountManager::checkIfEmptyIncomes() {
 
 bool AcountManager::checkIfEmptyExpenses() {
     if (expenses.empty()) {
-        cout << "Brak zapisanych wydatków ";
+        cout << "Brak zapisanych wydatkow ";
+        cout << endl;
         system("pause");
         return true;
     }
@@ -32,8 +34,11 @@ time_t AcountManager::getDate(){
             tmDate = AuxilaryMethods::dateParseStringToTm(stringDate);
             loopOn = false;
         }
-        else
+        else{
             cout << "Data niepoprawna!" << endl;
+            cout << endl;
+        }
+            
     }
 
     return mktime(&tmDate);
@@ -240,25 +245,31 @@ void AcountManager::displayAccountinCurrentMonth() {
 
     sortAcountInAscendingOrder();
 
-    cout << left << setw(20) << "-------Przychody w obecnym miesiacu:-------" << endl;
-    for ( vector<Record>::iterator i = incomes.begin(); i < incomes.end(); i++ ){
-        if (i->getDate() < cutOfDateUp && i->getDate() >= cutOfDateLow){
-             displayIncome(i);
-             sumIncomes += i->getAmount();
+    if(!checkIfEmptyIncomes()){
+        cout << left << setw(20) << "-------Przychody w obecnym miesiacu:-------" << endl;
+        for (vector<Record>::iterator i = incomes.begin(); i < incomes.end(); i++) {
+            if (i->getDate() < cutOfDateUp && i->getDate() >= cutOfDateLow) {
+                displayIncome(i);
+                sumIncomes += i->getAmount();
+            }
         }
     }
 
-    cout << left << setw(20) << "-------Wydatki w obecnym miesiacu:-------" << endl;
-    for (vector<Record>::iterator i = expenses.begin(); i < expenses.end(); i++) {
-        if (i->getDate() < cutOfDateUp && i->getDate() >= cutOfDateLow) {
-             displayIncome(i);
-             sumExpenses += i->getAmount();
+    if(!checkIfEmptyExpenses()){
+        cout << left << setw(20) << "-------Wydatki w obecnym miesiacu:-------" << endl;
+        for (vector<Record>::iterator i = expenses.begin(); i < expenses.end(); i++) {
+            if (i->getDate() < cutOfDateUp && i->getDate() >= cutOfDateLow) {
+                displayIncome(i);
+                sumExpenses += i->getAmount();
+            }
         }
     }
+   
 
     cout << left << setw(20) << "Laczne przychody w obecnym miesiacu wyniosly: " << sumIncomes << endl;
     cout << left << setw(20) << "Laczne wydatki w obecnym miesiacu wyniosly: " << sumExpenses << endl;
     cout << left << setw(20) << "Bilans w obecnym miesiacu wynosi: " << sumIncomes - sumExpenses << endl;
+    system("pause");
 }
 
 void AcountManager::displayAccountinLasttMonth() {
@@ -268,58 +279,67 @@ void AcountManager::displayAccountinLasttMonth() {
 
     sortAcountInAscendingOrder();
 
-    cout << left << setw(20) << "-------Przychody w poprzednim miesiacu:-------" << endl;
-    for (vector<Record>::iterator i = incomes.begin(); i < incomes.end(); i++) {
-        if (i->getDate() < cutOfDateUp && i->getDate() >= cutOfDateLow) {
-             displayIncome(i);
-             sumIncomes += i->getAmount();
+    if (!checkIfEmptyIncomes()) {
+        cout << left << setw(20) << "-------Przychody w poprzednim miesiacu:-------" << endl;
+        for (vector<Record>::iterator i = incomes.begin(); i < incomes.end(); i++) {
+            if (i->getDate() < cutOfDateUp && i->getDate() >= cutOfDateLow) {
+                displayIncome(i);
+                sumIncomes += i->getAmount();
+            }
         }
     }
 
-    cout << left << setw(20) << "-------Wydatki w poprzednim miesiacu:-------" << endl;
-    for (vector<Record>::iterator i = expenses.begin(); i < expenses.end(); i++) {
-        if (i->getDate() < cutOfDateUp && i->getDate() >= cutOfDateLow) {
-             displayIncome(i);
-             sumExpenses += i->getAmount();
+    if (!checkIfEmptyExpenses()) {
+        cout << left << setw(20) << "-------Wydatki w poprzednim miesiacu:-------" << endl;
+        for (vector<Record>::iterator i = expenses.begin(); i < expenses.end(); i++) {
+            if (i->getDate() < cutOfDateUp && i->getDate() >= cutOfDateLow) {
+                displayIncome(i);
+                sumExpenses += i->getAmount();
+            }
         }
     }
 
-    cout << left << setw(20) << "Laczne przychody w poprzednim miesiacu wyniosly: " << sumIncomes << endl;
-    cout << left << setw(20) << "Laczne wydatki w poprzednim miesiacu wyniosly: " << sumExpenses << endl;
-    cout << left << setw(20) << "Bilans w poprzednim miesiacu wyniosl: " << sumIncomes - sumExpenses << endl;
+
+        cout << left << setw(20) << "Laczne przychody w poprzednim miesiacu wyniosly: " << sumIncomes << endl;
+        cout << left << setw(20) << "Laczne wydatki w poprzednim miesiacu wyniosly: " << sumExpenses << endl;
+        cout << left << setw(20) << "Bilans w poprzednim miesiacu wyniosl: " << sumIncomes - sumExpenses << endl;
+        system("pause");
 }
 
 void AcountManager::displayAccountinChosenPeriod() {
     double sumIncomes = 0, sumExpenses = 0;
     char dateStringUp[11] = "", dateStringDown[11] = "";
     
-  //  time_t cutOfDateLow = getDate();
- //  time_t cutOfDateUp = getDate();
-    time_t cutOfDateUp = cutOffPreviousMonthUp();
-    time_t cutOfDateLow = cutOffPreviousMonthDown();
+    time_t cutOfDateLow = getDate();
+    time_t cutOfDateUp = getDate();
 
     strftime(dateStringUp, 11, "%Y-%m-%d", gmtime(&cutOfDateUp));
     strftime(dateStringDown, 11, "%Y-%m-%d", gmtime(&cutOfDateLow));
 
     sortAcountInAscendingOrder();
 
-    cout << "----Przychody od " << dateStringDown << " do " << dateStringUp << "----" << endl;
-    for (vector<Record>::iterator i = incomes.begin(); i < incomes.end(); i++) {
-        if (i->getDate() <= cutOfDateUp && i->getDate() >= cutOfDateLow) {
-             displayIncome(i);
-             sumIncomes += i->getAmount();
+    if (!checkIfEmptyIncomes()) {
+        cout << "----Przychody od " << dateStringDown << " do " << dateStringUp << "----" << endl;
+        for (vector<Record>::iterator i = incomes.begin(); i < incomes.end(); i++) {
+            if (i->getDate() <= cutOfDateUp && i->getDate() >= cutOfDateLow) {
+                displayIncome(i);
+                sumIncomes += i->getAmount();
+            }
         }
     }
 
-    cout << "----Wydatki od " << dateStringDown << " do " << dateStringUp << "----" << endl;
-    for (vector<Record>::iterator i = expenses.begin(); i < expenses.end(); i++) {
-        if (i->getDate() <= cutOfDateUp && i->getDate() >= cutOfDateLow) {
-             displayIncome(i);
-             sumExpenses += i->getAmount();
+    if (!checkIfEmptyExpenses()) {
+        cout << "----Wydatki od " << dateStringDown << " do " << dateStringUp << "----" << endl;
+        for (vector<Record>::iterator i = expenses.begin(); i < expenses.end(); i++) {
+            if (i->getDate() <= cutOfDateUp && i->getDate() >= cutOfDateLow) {
+                displayIncome(i);
+                sumExpenses += i->getAmount();
+            }
         }
     }
 
     cout << left << setw(20) << "Laczne przychody w poprzednim miesiacu wyniosly: " << sumIncomes << endl;
     cout << left << setw(20) << "Laczne wydatki w poprzednim miesiacu wyniosly: " << sumExpenses << endl;
     cout << left << setw(20) << "Bilans w poprzednim miesiacu wyniosl: " << sumIncomes - sumExpenses << endl;
+    system("pause");
 }

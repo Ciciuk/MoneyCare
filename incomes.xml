@@ -42,4 +42,11 @@
 <Item>wplata6</Item>
 <Amount>223.400000</Amount>
 </Income>
+<Income>
+<IncomeId>7</IncomeId>
+<UserId>3</UserId>
+<Date>2023-05-27</Date>
+<Item>Sprzedaz zabawek</Item>
+<Amount>999.900000</Amount>
+</Income>
 </Incomes>
