@@ -57,7 +57,7 @@ void IncomesFile::saveNewRecord(const Record income) {
     xml.AddElem("Date", dateString);
     xml.AddElem("Item", income.getItem());
     xml.AddElem("Amount", to_string(income.getAmount()));
-    xml.Save("incomes.xml");
+    xml.Save(fileName);
 
     File::setLastId(income.getRecordId());
 }

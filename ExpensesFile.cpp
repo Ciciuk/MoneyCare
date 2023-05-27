@@ -60,5 +60,5 @@ void ExpensesFile::saveNewRecord(const Record expense) {
     xml.AddElem("Date", dateString);
     xml.AddElem("Item", expense.getItem());
     xml.AddElem("Amount", to_string(expense.getAmount()));
-    xml.Save("expenses.xml");
+    xml.Save(fileName);
 }

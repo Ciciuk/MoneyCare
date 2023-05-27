@@ -43,6 +43,9 @@
     "vector": "cpp",
     "ctime": "cpp",
     "string": "cpp",
-    "*.tcc": "cpp"
+    "*.tcc": "cpp",
+    "memory": "cpp",
+    "istream": "cpp",
+    "functional": "cpp"
   }
 }

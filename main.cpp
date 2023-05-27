@@ -13,6 +13,7 @@
 #include "ExpensesFile.h"
 #include "IncomesFile.h"
 #include "AcountManager.h"
+#include "UserFile.h"
 
 using namespace std;
 
@@ -168,13 +169,17 @@ int main() {
     // Record expense1(1, 2, 0, "lekarz", 12.5);
 
     // expensesFile.saveNewRecord(expense1);
-    AcountManager acount("expenses", "incomes", 1);
+    //AcountManager acount("expenses", "incomes", 1);
+
+    UserFile users("users");
+    User user(4, "L4", "444", "Mateusz4", "Miciuk4");
+    vector <User> userss;
+    userss = users.loadUsersFromFile();
 
 
+    // acount.displayAccountinChosenPeriod();
 
-    acount.displayAccountinChosenPeriod();
-
-    return 0;
+        return 0;
 }
 
 //int datatest_main(){
