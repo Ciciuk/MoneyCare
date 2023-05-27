@@ -14,8 +14,8 @@ class File {
 
    public:
    File(string fileName) : FILE_NAME (fileName){};
-   virtual vector<Record> loadRecordsByUserId(int id){};
-   virtual void saveNewRecord(const Record income){};
+   virtual vector<Record> loadRecordsByUserId(){};
+   virtual void saveNewRecord(){};
 
    string getName();
    int getLastId();

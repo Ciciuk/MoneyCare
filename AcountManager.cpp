@@ -123,7 +123,7 @@ double AcountManager::stringToDouble(const string &number) {
     string x = number;
 
     size_t pos = x.find(',');
-    if (pos != -1)
+    if (pos != string::npos)
         x.replace(pos, 1, ".");
 
     return stod(x);

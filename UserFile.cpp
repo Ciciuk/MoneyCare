@@ -29,7 +29,6 @@ vector<User> UserFile::loadUsersFromFile() {
     vector<User> vUser;
     User user;
     string fileName = "";
-    int lastId;
 
     fileName.append(FILE_NAME);
     fileName.append(".xml");
@@ -49,7 +48,6 @@ vector<User> UserFile::loadUsersFromFile() {
         xml.FindChildElem("Surname");
         user.setSurname(xml.GetChildData());
         vUser.push_back(user);
-        lastId = user.getId();
     }
     return vUser;
 }
@@ -58,13 +56,11 @@ void UserFile::saveUserAfterPaswordChange(const User user) {
 
     CMarkup xml;
     string fileName = "";
-    int idCheck = 0;
-    bool lastId;
 
 
     fileName.append(FILE_NAME);
     fileName.append(".xml");
-    lastId = xml.Load(fileName);
+    xml.Load(fileName);
 
     xml.FindElem();
     xml.IntoElem();
@@ -76,6 +72,5 @@ void UserFile::saveUserAfterPaswordChange(const User user) {
         }
     }
     xml.Save(fileName);
-    // xml.FindChildElem("Password");
         
 }

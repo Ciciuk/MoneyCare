@@ -49,4 +49,11 @@
 <Item>Sprzedaz zabawek</Item>
 <Amount>999.900000</Amount>
 </Income>
+<Income>
+<IncomeId>8</IncomeId>
+<UserId>3</UserId>
+<Date>2023-05-27</Date>
+<Item>Costam</Item>
+<Amount>12.300000</Amount>
+</Income>
 </Incomes>
